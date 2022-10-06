@@ -1,28 +1,29 @@
 import React from "react";
 import Heading from "./Heading";
 import advenPic from "../../assets/adventure.svg";
-import Answer from "./Answer";
+import {WrongAnswers,CorrectAnswer} from "./Answer";
+import styles from '../../App.module.css';
 
-const Question = ({ question, answers }) => {
+
+const Question = ({ question, wrongAnswers, correctAnswer }) => {
     return (
         <main className="centerDiv">
             <Heading />
             <div className="adventurePicDiv">
                 <img src={advenPic} alt="pic" className="adventurePic" />
             </div>
-            <div className="mainContent">
+            <div className={styles.mainContent}>
                 <div className="questionTextDiv">
                     <h1 className="questionText">{question}</h1>
                 </div>
                 <div className="liDiv">
                     <ol>
-                        {answers?.map((answer) => {return <Answer answer={answer} />;})}
+                        {wrongAnswers?.map((wrongAnswers) => {return <WrongAnswers answers={wrongAnswers}/>;})}
+                        <CorrectAnswer answer={correctAnswer}/>
                     </ol>
                 </div>
                 <div className="nextBtnDiv">
-                    <button className="nextBtn">
-                        Next
-                    </button>
+                    <button className="nextBtn">Next</button>
                 </div>
             </div>
         </main>
