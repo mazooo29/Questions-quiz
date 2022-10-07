@@ -1,12 +1,7 @@
-
-// function finalAnswer(){
-//     if()
-// }
-export function WrongAnswers({answers}){
-    return <li>{answers}</li>
+export function IncorrectAnswers({answers}){
+    return <li key={Math.random()*423}>{answers}</li>
 }
 export function CorrectAnswer({answer}){
-    return <li >{answer}</li>
+    return <li key={Math.random()*593}>{answer}</li>
 }
-console.log(WrongAnswers);
-export default CorrectAnswer; 
+export default IncorrectAnswers; 

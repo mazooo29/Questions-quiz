@@ -1,11 +1,10 @@
 import React from "react";
-import QuestionCard from './containers/questionCard';
-import Footerfun from './components/question/footer.jsx'
-    import './App.css';
-
+import QuestionCard from './containers/questionCard/questionCard';
+import Footerfun from './components/question/footer/footer.jsx'
+import './App.module.css';
+import './components/question/footer/footer.module.css'
 
 function App() {
-    // console.log(DataFetching())
     return (
         <div>
             {/* call questionCard component */}

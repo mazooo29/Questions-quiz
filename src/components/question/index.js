@@ -1,33 +1,39 @@
 import React from "react";
-import Heading from "./Heading";
+import Heading from "../question/Header/Heading";
 import advenPic from "../../assets/adventure.svg";
-import {WrongAnswers,CorrectAnswer} from "./Answer";
+import {IncorrectAnswers,CorrectAnswer} from "./Answer.jsx";
 import styles from '../../App.module.css';
 
 
-const Question = ({ question, wrongAnswers, correctAnswer }) => {
+const Question = ({question, incorrectAnswers, correctAnswer}) => {
     return (
-        <main className="centerDiv">
+        <main className={styles.centerDiv}>
             <Heading />
-            <div className="adventurePicDiv">
-                <img src={advenPic} alt="pic" className="adventurePic" />
+            <div className={styles.adventurePicDiv}>
+                <img src={advenPic} alt="pic" className={styles.adventurePic} />
             </div>
             <div className={styles.mainContent}>
-                <div className="questionTextDiv">
-                    <h1 className="questionText">{question}</h1>
+                <div className={styles.questionTextDiv}>
+                    <h1 className={styles.questionText}>{question}</h1>
                 </div>
-                <div className="liDiv">
+                <div className={styles.liDiv}>
                     <ol>
-                        {wrongAnswers?.map((wrongAnswers) => {return <WrongAnswers answers={wrongAnswers}/>;})}
-                        <CorrectAnswer answer={correctAnswer}/>
+                        {handleshuffle(
+                        <CorrectAnswer answer={correctAnswer}/>,
+                        incorrectAnswers?.map((incorrectAnswers) => {return <IncorrectAnswers answers={incorrectAnswers}/>;}))}
                     </ol>
                 </div>
-                <div className="nextBtnDiv">
-                    <button className="nextBtn">Next</button>
+                <div className={styles.nextBtnDiv}>
+                    <button className={styles.nextBtn}>Next</button>
                 </div>
             </div>
         </main>
     );
 };
 
+                        
+let handleshuffle = (correctAnswer,incorrectAnswers) =>{
+    let handleOptions = [correctAnswer,incorrectAnswers.map((incorrectAnswers)=> incorrectAnswers)];
+    return handleOptions.sort(()=> Math.random() - 0.5);
+}
 export default Question;
