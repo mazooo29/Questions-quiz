@@ -29,9 +29,7 @@ const Question = ({question, incorrectAnswers, correctAnswer}) => {
             </div>
         </main>
     );
-};
-
-                        
+};                
 let handleshuffle = (correctAnswer,incorrectAnswers) =>{
     let handleOptions = [correctAnswer,incorrectAnswers.map((incorrectAnswers)=> incorrectAnswers)];
     return handleOptions.sort(()=> Math.random() - 0.5);
