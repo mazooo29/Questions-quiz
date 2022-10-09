@@ -33,6 +33,7 @@ const Question = ({question, incorrectAnswers, correctAnswer}) => {
         </main>
     );
 }; 
+
 let handleshuffle = (correctAnswer,incorrectAnswers) =>{
     let array = [correctAnswer,...incorrectAnswers];
     let currentIndex = array.length, randomIndex;
