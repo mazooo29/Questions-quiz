@@ -4,7 +4,6 @@ import FetchQuestions from "../../components/question/DataFetching";
 
 const QuestionContainer = () => {
     let {questions} = FetchQuestions()
-    console.log(questions)
     return (
         <div>
             {questions.map((question) => (
