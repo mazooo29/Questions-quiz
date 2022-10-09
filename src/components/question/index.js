@@ -19,8 +19,11 @@ const Question = ({question, incorrectAnswers, correctAnswer}) => {
                 <div className={styles.liDiv}>
                     <ol>
                         {handleshuffle(
-                        <CorrectAnswer answer={correctAnswer}/>,
-                        incorrectAnswers?.map((incorrectAnswers) => {return <IncorrectAnswers answers={incorrectAnswers}/>;}))}
+                        <CorrectAnswer answer={correctAnswer} key={question}/>,
+                        incorrectAnswers?.map((incorrectAnswers) => {
+                            return <IncorrectAnswers 
+                            answers={incorrectAnswers}
+                            key={Math.random()*1400}/>;}))}
                     </ol>
                 </div>
                 <div className={styles.nextBtnDiv}>
@@ -29,11 +32,15 @@ const Question = ({question, incorrectAnswers, correctAnswer}) => {
             </div>
         </main>
     );
-};
-
-                        
+}; 
 let handleshuffle = (correctAnswer,incorrectAnswers) =>{
-    let handleOptions = [correctAnswer,incorrectAnswers.map((incorrectAnswers)=> incorrectAnswers)];
-    return handleOptions.sort(()=> Math.random() - 0.5);
+    let array = [correctAnswer,...incorrectAnswers];
+    let currentIndex = array.length, randomIndex;
+    while(currentIndex !== 0){
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex --;
+        [array[currentIndex],array[randomIndex]] = [array[randomIndex],array[currentIndex]];
+    }
+    return array
 }
 export default Question;

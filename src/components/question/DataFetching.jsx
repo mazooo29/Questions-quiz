@@ -14,9 +14,8 @@ function FetchQuestions(){
             return err;
         });
     },[])
-    return {
-        questions
-    };
+    return(
+        {questions}
+    );
 }
-
 export default FetchQuestions;
