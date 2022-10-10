@@ -1,7 +1,5 @@
-export function IncorrectAnswers({answers}){
+export function Answers({answers}){ // make it one component
     return <li>{answers}</li>
 }
-export function CorrectAnswer({answer}){
-    return <li>{answer}</li>
-}
-export default IncorrectAnswers; 
+
+export default Answers; 

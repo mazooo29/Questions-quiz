@@ -12,6 +12,5 @@ function App() {
             <Footerfun/>
         </div>
     );
-}
-
+}   
 export default App;
