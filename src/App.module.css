@@ -97,3 +97,13 @@ ol{
 .nextBtn:hover{
     background-color:#f59700;
 }
+.incorrect_answer{
+    background-color:#df6a6a;
+    color: white;
+    background-image: url(./assets/false.png);
+}
+.correct_answer{
+    background-color:#60BF88;
+    color: white;
+    background-image: url(./assets/true.png);
+}
