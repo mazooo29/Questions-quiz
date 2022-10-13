@@ -5,7 +5,6 @@ body{
     background-position: center;
 }
 .centerDiv{
-    /* text-align: left; */
     position: relative;
     width: fit-content;
     margin: 7% auto 90px auto;
@@ -96,4 +95,14 @@ ol{
 }
 .nextBtn:hover{
     background-color:#f59700;
+}
+.incorrect_answer{
+    background-color:#df6a6a;
+    color: white;
+    background-image: url(./assets/false.png);
+}
+.correct_answer{
+    background-color:#60BF88;
+    color: white;
+    background-image: url(./assets/true.png);
 }
