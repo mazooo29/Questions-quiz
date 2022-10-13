@@ -4,13 +4,14 @@ import advenPic from "../../assets/adventure.svg";
 import styles from '../../App.module.css';
 
 
-const Question = ({incrementIndex,incrementScore,question, incorrectAnswers, correctAnswer}) => {
+const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) => {
     let [answer,setAnswers] = useState([]);
     useEffect(()=>{
         setAnswers(handleshuffle(correctAnswer, incorrectAnswers));
     },[correctAnswer, incorrectAnswers]) // dependency array run one time
-    function Answers({answers}){ // make it one component
-        return <li>{answers}</li>
+
+    function Answers(index, answers){ // make it one component
+        return <li key={index}>{answers}</li>
     }
     return (
         <main className={styles.centerDiv}>
@@ -24,11 +25,11 @@ const Question = ({incrementIndex,incrementScore,question, incorrectAnswers, cor
                 </div>
                 <div className={styles.liDiv}>
                     <ol>
-                        {answer.map((answer,i) => <Answers key={i} answers={answer}/>)}
+                        {answer.map((answer,i) => Answers(i, answer))}
                     </ol>
                 </div>
                 <div className={styles.nextBtnDiv}>
-                    <button className={styles.nextBtn} onClick={incrementIndex} >Next</button>
+                    <button className={styles.nextBtn} onClick={incrementIndex}>Next</button>
                 </div>
             </div>
         </main>

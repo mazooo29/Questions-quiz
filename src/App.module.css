@@ -5,7 +5,6 @@ body{
     background-position: center;
 }
 .centerDiv{
-    /* text-align: left; */
     position: relative;
     width: fit-content;
     margin: 7% auto 90px auto;

@@ -8,6 +8,7 @@ function QuestionContainer(){
     let [question,setQuestions]= useState([])
     let [index,setIndex] = useState({});
     let [score,setScore] = useState(0);
+    let [choosedAnswer,setChoosedAnswer] = useState({});
     useEffect(()=>{
         if(question.length === 0){
             try{
@@ -22,37 +23,44 @@ function QuestionContainer(){
             }catch(err){console.log("Error 404")}
         }
     },[question]);
-    let handleClick = () =>{
-        return question[index].correctAnswer;
-    }
-    function incrementIndex(){
-        if(index < 10){
-            console.log(question[index].correctAnswer)
-            if(question[index].correctAnswer === handleClick()){
-                setScore(score += 100);
-                console.log("correct answer:",score);
-                return setIndex(index + 1)
+    function incrementIndex(choosedAnswer){
+        if(index < question.length){
+            console.log(index, question.length)
+            if(choosedAnswer !== null){
+                console.log("choosedAnswer: ",choosedAnswer);
+                console.log("index: ", index);
+                incrementScore(question[index].correctAnswer,choosedAnswer)
+                setIndex(index + 1)
             }else{
-                console.log("incorrect answer:",score);
-                return setIndex(index + 1);
+                return alert("please enter an answer")
             }
-        }else{
-            <ResultCard/>
+            
         }
     }
-
+    function incrementScore(correctAnswer,choosedAnswer){
+        if(correctAnswer === choosedAnswer){
+            setScore(score+= 100)
+            console.log(score)
+            return console.log("correct Answer");
+        }else{
+            console.log(score);
+            return console.log("incorrect Answer")
+        }
+    }
     return (
         <div>
             {question[index] && question[index].question &&// questions && to make sure that data arrived first before returning it.
                 <Question
                     questionCard={question[index]}
                     key={question[index].id}
-                    incrementIndex={() => {incrementIndex()}}
-                    incrementScore={score}
+                    incrementIndex={() => {incrementIndex( )}}
                     question={question[index].question}
                     incorrectAnswers={question[index].incorrectAnswers}
                     correctAnswer={question[index].correctAnswer}
                 />
+            }
+            {index === 10 && 
+                <ResultCard/>
             }
         </div>
     );
