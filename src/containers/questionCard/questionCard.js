@@ -8,7 +8,6 @@ function QuestionContainer(){
     let [question,setQuestions]= useState([])
     let [index,setIndex] = useState({});
     let [score,setScore] = useState(0);
-    let [choosedAnswer,setChoosedAnswer] = useState({});
     useEffect(()=>{
         if(question.length === 0){
             try{
@@ -25,26 +24,10 @@ function QuestionContainer(){
     },[question]);
     function incrementIndex(choosedAnswer){
         if(index < question.length){
-            console.log(index, question.length)
-            if(choosedAnswer !== null){
-                console.log("choosedAnswer: ",choosedAnswer);
-                console.log("index: ", index);
-                incrementScore(question[index].correctAnswer,choosedAnswer)
-                setIndex(index + 1)
-            }else{
-                return alert("please enter an answer")
+            if(choosedAnswer === question[index].correctAnswer){
+                setScore(score + 100);
             }
-            
-        }
-    }
-    function incrementScore(correctAnswer,choosedAnswer){
-        if(correctAnswer === choosedAnswer){
-            setScore(score+= 100)
-            console.log(score)
-            return console.log("correct Answer");
-        }else{
-            console.log(score);
-            return console.log("incorrect Answer")
+            setIndex(index + 1);
         }
     }
     return (
@@ -53,15 +36,13 @@ function QuestionContainer(){
                 <Question
                     questionCard={question[index]}
                     key={question[index].id}
-                    incrementIndex={() => {incrementIndex( )}}
+                    incrementIndex={incrementIndex}
                     question={question[index].question}
                     incorrectAnswers={question[index].incorrectAnswers}
                     correctAnswer={question[index].correctAnswer}
                 />
             }
-            {index === 10 && 
-                <ResultCard/>
-            }
+            {index === question.length && <ResultCard score={score}/>}
         </div>
     );
     

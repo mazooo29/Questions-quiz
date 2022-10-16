@@ -8,7 +8,7 @@ function App() {
     return (
         <div>
             {/* call questionCard component */}
-            <QuestionContainer/>
+            <QuestionContainer/>  
             <Footerfun/>
         </div>
     );

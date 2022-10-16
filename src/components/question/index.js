@@ -3,15 +3,30 @@ import Heading from "../question/Header/Heading";
 import advenPic from "../../assets/adventure.svg";
 import styles from '../../App.module.css';
 
-
 const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) => {
     let [answer,setAnswers] = useState([]);
+    let [choosedAnswer,setChoosedAnswer] = useState();
     useEffect(()=>{
         setAnswers(handleshuffle(correctAnswer, incorrectAnswers));
     },[correctAnswer, incorrectAnswers]) // dependency array run one time
-
-    function Answers(index, answers){ // make it one component
-        return <li key={index}>{answers}</li>
+    let handleStyle = (answer) =>{
+            if(choosedAnswer === correctAnswer && choosedAnswer === answer){
+                return styles.correct_answer;
+            }else if(choosedAnswer !== correctAnswer && answer === choosedAnswer){
+                return styles.incorrect_answer;
+            }else if(answer === correctAnswer && choosedAnswer !== undefined){
+                return styles.correct_answer;
+            }else{
+                return styles.liAnswers;
+            }
+    }
+    let handleNextBtn = () =>{
+        if(choosedAnswer !== undefined){
+            document.getElementById("nextBtn").disabled = true;
+            incrementIndex(choosedAnswer);
+        }else if(choosedAnswer === undefined){
+            document.getElementById("nextBtn").disabled = false;
+        }
     }
     return (
         <main className={styles.centerDiv}>
@@ -25,17 +40,20 @@ const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) =>
                 </div>
                 <div className={styles.liDiv}>
                     <ol>
-                        {answer.map((answer,i) => Answers(i, answer))}
+                        {answer.map((answer,i) => {
+                        return <li key={i} id={answer} onClick={() => {setChoosedAnswer(answer);}} 
+                            className={handleStyle(answer)}
+                            >{answer}</li>
+                    })}
                     </ol>
                 </div>
                 <div className={styles.nextBtnDiv}>
-                    <button className={styles.nextBtn} onClick={incrementIndex}>Next</button>
+                    <button className={styles.nextBtn} id='nextBtn' onClick={handleNextBtn}>Next</button>
                 </div>
             </div>
         </main>
     );
 }; 
-
 let handleshuffle = (correctAnswer,incorrectAnswers) =>{
     let array = [correctAnswer,...incorrectAnswers];
     let currentIndex = array.length, randomIndex;

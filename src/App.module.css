@@ -48,7 +48,7 @@ body{
     align-items: center;
     bottom: 0px;
 }
-li{
+.liAnswers{
     font-family: 'Poppins';
     padding:0px 40px;
     margin-bottom:31px;
@@ -99,10 +99,42 @@ ol{
 .incorrect_answer{
     background-color:#df6a6a;
     color: white;
+    font-family: 'Poppins';
+    padding:0px 40px;
+    margin-bottom:31px;
+    border: 2px solid #6066D0;
+    color: #6066D0;
+    font-size: 18px;
+    text-align: center;
+    margin-right:25px;
+    width:400px;
+    height: fit-content;
+    line-height:50px;
+    border-radius:12px;
+    box-shadow:2px 1px 5px 2px #6066D0;
     background-image: url(./assets/false.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 40px;
 }
 .correct_answer{
     background-color:#60BF88;
     color: white;
+    font-family: 'Poppins';
+    padding:0px 40px;
+    margin-bottom:31px;
+    border: 2px solid #6066D0;
+    color: #6066D0;
+    font-size: 18px;
+    text-align: center;
+    margin-right:25px;
+    width:400px;
+    height: fit-content;
+    line-height:50px;
+    border-radius:12px;
+    box-shadow:2px 1px 5px 2px #6066D0;
     background-image: url(./assets/true.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 40px;
 }
