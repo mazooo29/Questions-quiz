@@ -1,0 +1,73 @@
+.countryTextDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:465px;
+    height: 60%;
+    position: relative;
+    margin: 7% auto 90px auto;
+}
+.mainContentDiv{
+    align-items: center;
+    background-color: white;
+    width: 464px;
+    height:542px;
+    border-radius: 24px;
+}
+.winnerPicDiv{
+    margin: 10px auto auto 120px;
+}
+.ResultTextDiv{
+    font-family: 'Poppins';
+    display: flex;
+    padding-top: 50px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 25px;
+    justify-content: center;
+}
+.numOfCorrDiv{
+    font-family: 'Poppins';
+    display: flex;
+    justify-content: center;
+    line-height: 0px;
+    font-size: 18px;
+}
+.numOfCorrSpan{
+    color: #6FCF97;
+    font-size: 30px;
+}
+.tryAgainDiv{
+    background-color: black;
+    margin: 70px auto auto auto;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+.tryAgainBtn{
+    font-family:'Poppins';
+    padding: 15px 37px;
+    background-color: white;
+    width: fit-content;
+    color: #1D355D;
+    height: 56px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 18px;
+    bottom: 32px;
+    margin: 70px auto auto 35%;
+    border: 1px  solid #928181;
+    box-shadow: 2px 3px #1D355D;
+    cursor: pointer;
+}
+.tryAgainBtn:hover{
+    background-color:#494fca;
+    color: white;
+} 
+.scoreSpan{
+    color:#df6a6a;
+    font-weight: 700;
+    font-size: 30px;
+}
