@@ -10,23 +10,20 @@ const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) =>
         setAnswers(handleshuffle(correctAnswer, incorrectAnswers));
     },[correctAnswer, incorrectAnswers]) // dependency array run one time
     let handleStyle = (answer) =>{
-            if(choosedAnswer === correctAnswer && choosedAnswer === answer){
-                return styles.correct_answer;
-            }else if(choosedAnswer !== correctAnswer && answer === choosedAnswer){
-                return styles.incorrect_answer;
-            }else if(answer === correctAnswer && choosedAnswer !== undefined){
-                return styles.correct_answer;
-            }else{
-                return styles.liAnswers;
-            }
+            let result = choosedAnswer === correctAnswer && choosedAnswer === answer
+            ?styles.correct_answer
+            :choosedAnswer !== correctAnswer && answer === choosedAnswer
+            ?styles.incorrect_answer
+            :choosedAnswer !== undefined && answer === correctAnswer
+            ?styles.correct_answer
+            :styles.liAnswers;
+        return result;
     }
     let handleNextBtn = () =>{
-        if(choosedAnswer !== undefined){
-            document.getElementById("nextBtn").disabled = true;
-            incrementIndex(choosedAnswer);
-        }else if(choosedAnswer === undefined){
-            document.getElementById("nextBtn").disabled = false;
-        }
+        let result = choosedAnswer !== undefined
+        ? document.getElementById("nextBtn").disabled = true && incrementIndex(choosedAnswer)
+        :document.getElementById("nextBtn").disabled = false;
+        return result;
     }
     return (
         <main className={styles.centerDiv}>
