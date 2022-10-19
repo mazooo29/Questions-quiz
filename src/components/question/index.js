@@ -10,20 +10,17 @@ const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) =>
         setAnswers(handleshuffle(correctAnswer, incorrectAnswers));
     },[correctAnswer, incorrectAnswers]) // dependency array run one time
     let handleStyle = (answer) =>{
-            let result = choosedAnswer === correctAnswer && choosedAnswer === answer
+            let result = 
+            (choosedAnswer === correctAnswer && choosedAnswer === answer) 
+            || (!choosedAnswer && answer === correctAnswer)
             ?styles.correct_answer
             :choosedAnswer !== correctAnswer && answer === choosedAnswer
             ?styles.incorrect_answer
-            :choosedAnswer !== undefined && answer === correctAnswer
-            ?styles.correct_answer
             :styles.liAnswers;
         return result;
     }
     let handleNextBtn = () =>{
-        let result = choosedAnswer !== undefined
-        ? document.getElementById("nextBtn").disabled = true && incrementIndex(choosedAnswer)
-        :document.getElementById("nextBtn").disabled = false;
-        return result;
+        incrementIndex(choosedAnswer);
     }
     return (
         <main className={styles.centerDiv}>
@@ -45,7 +42,7 @@ const Question = ({incrementIndex,question, incorrectAnswers, correctAnswer}) =>
                     </ol>
                 </div>
                 <div className={styles.nextBtnDiv}>
-                    <button className={styles.nextBtn} id='nextBtn' onClick={handleNextBtn}>Next</button>
+                    <button className={styles.nextBtn} id='nextBtn' onClick={handleNextBtn} disabled={!choosedAnswer}>Next</button>
                 </div>
             </div>
         </main>
