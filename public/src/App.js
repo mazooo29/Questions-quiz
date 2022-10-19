@@ -7,6 +7,7 @@ import './components/question/footer/footer.module.css'
 function App() {
     return (
         <div>
+            {/* call questionCard component */}
             <QuestionContainer/>  
             <Footerfun/>
         </div>
